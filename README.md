@@ -13,7 +13,6 @@ npm run dev
 ```
 
 скачать этот проект и зайти в него
-
 установить зависимости проекта и запустить
 
 ```
@@ -21,6 +20,17 @@ npm install
 npm run dev
 ```
 
+# GIT
+
+твоя ветка max из нее отправляй pull request в dev
+
+Перед тем как отправлять pull request переключайся
+на dev и делай pull а потом переключайся на свою
+и мержи свою ветку с dev
+
+в комитах пиши что делал
+
+================================================
 
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
