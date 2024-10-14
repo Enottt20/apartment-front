@@ -35,6 +35,8 @@ https://github.com/ant-design/ant-design
 
 # Что делать
 
+![alt text](docs/image.png)
+
 
 ================================================
 
