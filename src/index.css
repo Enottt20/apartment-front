@@ -67,66 +67,14 @@ button:focus-visible {
   }
 }
 
-.container{
-  display: flex;
-  flex-direction: column;
-  margin: auto;
-  margin-top: 150px;
-  padding-bottom: 50px;
-  background: #0f0f0f;
-  width: 700px;
-  border-radius: 20px;
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-.header{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 9px;
-  width: 100%;
-  margin-top: 30px;
-}
-
-.text{
-  font-size: 48px;
-  font-weight: 700;
-  padding-bottom: 5px
-}
-
-.underline{
-  width: 470px;
-  height: 6px;
-  border-radius: 9px;
-  background: #cacaca;
-}
-
-.inputs{
-  margin-top: 55px;
-  display: flex;
-  flex-direction: column;
-  gap: 25px;
-}
-
-.input{
-  display: flex;
-  align-items: center;
-  margin: auto;
-  width: 480px;
-  height: 80px;
-  border-radius: 6px;
-  background: #464647;
-}
-
-.input img{
-  margin: 20px;
-}
-
-.input input{
-  height: 50px;
-  width: 400px;
-  border: none;
-  outline: none;
-  color: #ffffff;
-  font-size: 19px;
-  border-radius: 5px;
-}
