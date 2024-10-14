@@ -1,5 +1,5 @@
 import React from 'react';
-import { Form, Input, Button, Typography } from 'antd';
+import { Form, Input, Button, Typography, Radio } from 'antd';
 import { MailOutlined, LockOutlined } from '@ant-design/icons';
 import 'antd/dist/reset.css';
 
@@ -9,6 +9,7 @@ interface LoginFormValues {
   username: string;
   email: string;
   password: string;
+  role: 'seller' | 'buyer'; // Добавлено поле для роли
 }
 
 const LoginForm: React.FC = () => {
@@ -24,9 +25,9 @@ const LoginForm: React.FC = () => {
   return (
     <div style={styles.container}>
       <div style={styles.formWrapper}>
-        <Title level={2} style={styles.title}>Вход в систему</Title>
+        <Title level={2} style={styles.title}>Регистрация</Title>
         <Form
-          name="login_form"
+          name="registration_form" // Изменил имя формы
           initialValues={{ remember: true }}
           onFinish={onFinish}
           onFinishFailed={onFinishFailed}
@@ -63,10 +64,22 @@ const LoginForm: React.FC = () => {
             />
           </Form.Item>
 
+          {/* Выбор роли */}
+          <Form.Item
+            label="Выберите вашу роль"
+            name="role"
+            rules={[{ required: true, message: 'Пожалуйста, выберите вашу роль!' }]}
+          >
+            <Radio.Group>
+              <Radio value="buyer">Покупатель</Radio>
+              <Radio value="seller">Продавец</Radio>
+            </Radio.Group>
+          </Form.Item>
+
           {/* Кнопка Отправки */}
           <Form.Item>
             <Button type="primary" htmlType="submit" style={styles.submitButton} block>
-              Войти
+              Зарегистрироваться
             </Button>
           </Form.Item>
         </Form>
@@ -78,8 +91,9 @@ const LoginForm: React.FC = () => {
 const styles: { [key: string]: React.CSSProperties } = {
   container: {
     display: 'flex',
+    justifyContent: 'center', // Центрировать по горизонтали
     alignItems: 'center',
-    maxWidth: '1000px',
+    minHeight: '100vh', // Занять всю высоту экрана
   },
   formWrapper: {
     padding: '40px',
