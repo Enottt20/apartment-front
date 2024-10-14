@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Form, Input, Button, Typography, Radio } from 'antd';
 import { MailOutlined, LockOutlined } from '@ant-design/icons';
 import 'antd/dist/reset.css';
@@ -6,13 +6,14 @@ import 'antd/dist/reset.css';
 const { Title } = Typography;
 
 interface LoginFormValues {
-  username: string;
   email: string;
   password: string;
-  role: 'seller' | 'buyer'; // Добавлено поле для роли
+  role?: 'seller' | 'buyer'; // Роль теперь необязательная для формы логина
 }
 
-const LoginForm: React.FC = () => {
+const RegistrationForm: React.FC = () => {
+  const [isLogin, setIsLogin] = useState(false); // Стейт для переключения форм
+
   const onFinish = (values: LoginFormValues) => {
     console.log('Успешная отправка:', values);
   };
@@ -25,9 +26,9 @@ const LoginForm: React.FC = () => {
   return (
     <div style={styles.container}>
       <div style={styles.formWrapper}>
-        <Title level={2} style={styles.title}>Регистрация</Title>
+        <Title level={2} style={styles.title}>{isLogin ? 'Вход в систему' : 'Регистрация'}</Title>
         <Form
-          name="registration_form" // Изменил имя формы
+          name={isLogin ? "login_form" : "registration_form"} // Изменить имя формы в зависимости от состояния
           initialValues={{ remember: true }}
           onFinish={onFinish}
           onFinishFailed={onFinishFailed}
@@ -64,22 +65,31 @@ const LoginForm: React.FC = () => {
             />
           </Form.Item>
 
-          {/* Выбор роли */}
-          <Form.Item
-            label="Выберите вашу роль"
-            name="role"
-            rules={[{ required: true, message: 'Пожалуйста, выберите вашу роль!' }]}
-          >
-            <Radio.Group>
-              <Radio value="buyer">Покупатель</Radio>
-              <Radio value="seller">Продавец</Radio>
-            </Radio.Group>
-          </Form.Item>
+          {/* Выбор роли только для регистрации */}
+          {!isLogin && (
+            <Form.Item
+              label="Выберите вашу роль"
+              name="role"
+              rules={[{ required: true, message: 'Пожалуйста, выберите вашу роль!' }]}
+            >
+              <Radio.Group>
+                <Radio value="buyer">Покупатель</Radio>
+                <Radio value="seller">Продавец</Radio>
+              </Radio.Group>
+            </Form.Item>
+          )}
 
           {/* Кнопка Отправки */}
           <Form.Item>
             <Button type="primary" htmlType="submit" style={styles.submitButton} block>
-              Зарегистрироваться
+              {isLogin ? 'Войти' : 'Зарегистрироваться'}
+            </Button>
+          </Form.Item>
+
+          {/* Переключение между формами */}
+          <Form.Item>
+            <Button type="link" onClick={() => setIsLogin(!isLogin)} block>
+              {isLogin ? 'Нет аккаунта? Зарегистрироваться' : 'Уже есть аккаунт? Войти'}
             </Button>
           </Form.Item>
         </Form>
@@ -112,4 +122,4 @@ const styles: { [key: string]: React.CSSProperties } = {
   },
 };
 
-export default LoginForm;
+export default RegistrationForm;
