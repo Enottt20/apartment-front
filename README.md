@@ -22,6 +22,8 @@ npm run dev
 
 # GIT
 
+иарпшва
+
 твоя ветка max из нее отправляй pull request в dev
 
 Перед тем как отправлять pull request переключайся
