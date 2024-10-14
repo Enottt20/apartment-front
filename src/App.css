@@ -1,42 +1,79 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.menu-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Центрировать по горизонтали */
+  min-height: 100vh;
+  width: 100%; /* Занять всю ширину */
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
+/* Стили для навбара */
+.navbar {
+  width: 100%; /* Занять всю ширину */
+  background-color: #001529;
+  padding: 0 20px;
+}
+
+/* Стили для списка навигации */
+.nav-links {
+  list-style: none;
+  display: flex;
+  justify-content: center; /* Выровнять по центру */
+  align-items: center;
+  height: 60px;
+}
+
+/* Стили для основного контента */
+.content {
+  flex: 1;
+  padding: 20px;
+  display: flex;
+  justify-content: center; /* Центрировать контент по горизонтали */
+  align-items: center; /* Центрировать контент по вертикали */
+  width: 100%;
+}
+
+/* Стили для элементов списка */
+.nav-item {
+  margin-right: 20px;
+}
+
+/* Стили для ссылок */
+.nav-item a {
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 16px;
+  transition: color 0.3s, border-bottom 0.3s;
+  padding-bottom: 4px;
+}
+
+/* Эффект при наведении */
+.nav-item a:hover {
+  color: #1890ff;
+  border-bottom: 2px solid #1890ff;
+}
+
+/* Активный элемент (требует дополнительной логики для установки класса 'active') */
+.nav-item a.active {
+  color: #1890ff;
+  border-bottom: 2px solid #1890ff;
+}
+
+
+/* Медиа-запросы для адаптивности */
+@media (max-width: 768px) {
+  .nav-links {
+    flex-direction: column;
+    align-items: flex-start;
+    height: auto;
   }
-  to {
-    transform: rotate(360deg);
+
+  .nav-item {
+    margin: 10px 0;
   }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
 }

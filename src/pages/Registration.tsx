@@ -1,6 +1,6 @@
 import React from 'react';
 import { Form, Input, Button, Typography } from 'antd';
-import { UserOutlined, MailOutlined, LockOutlined } from '@ant-design/icons';
+import { MailOutlined, LockOutlined } from '@ant-design/icons';
 import 'antd/dist/reset.css';
 
 const { Title } = Typography;
@@ -78,19 +78,16 @@ const LoginForm: React.FC = () => {
 const styles: { [key: string]: React.CSSProperties } = {
   container: {
     display: 'flex',
-    justifyContent: 'center',
     alignItems: 'center',
-    height: '100vh',
-    backgroundColor: '#f0f2f5',
+    maxWidth: '1000px',
   },
   formWrapper: {
     padding: '40px',
     borderRadius: '8px',
     backgroundColor: '#fff',
     boxShadow: '0 2px 8px rgba(0, 0, 0, 0.1)',
-    width: '100%',
-    maxWidth: '400px',
     animation: 'fadeIn 1s ease-in-out',
+    width: '500px',
   },
   title: {
     textAlign: 'center',
